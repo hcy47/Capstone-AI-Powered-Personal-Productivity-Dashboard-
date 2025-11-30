@@ -20,10 +20,10 @@ class User(Base):
   name: Mapped[str] = mapped_column(String(60),nullable=False)
   last_name: Mapped[str] = mapped_column(String(60),nullable=False)
   email: Mapped[str] = mapped_column(String(60),nullable=False, unique=True)
-  pasword: Mapped[str] = mapped_column(String(500),nullable=False)
+  password: Mapped[str] = mapped_column(String(500),nullable=False)
   created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now(), nullable=False)
 
-  category: Mapped[list['Category']]= relationship('category', back_populates='user')
+  categories: Mapped[list['Category']]= relationship('Category', back_populates='user')
 
 
 class Category(Base):
@@ -37,3 +37,4 @@ class Category(Base):
   user: Mapped['User']= relationship('User', back_populates='categories')
 
 
+# class Ai_recommendation(Base):

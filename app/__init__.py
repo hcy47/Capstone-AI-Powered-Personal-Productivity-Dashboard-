@@ -1,6 +1,8 @@
 # where I create the create_app() function
 from flask import  Flask
 from .models import db
+from .extensions import ma
+from .blueprints.users import users_bp
 
 #create the application factory
 def create_app(config_name):
@@ -10,11 +12,15 @@ def create_app(config_name):
   #configure the app
   app.config.from_object(f'config.{config_name}')
 
-  # initialize extentions oon app
+  # initialize extentions on app
   db.init_app(app)
-  # ma.init_app(app)
+  ma.init_app(app)
   # limiter.init_app(app)
   # cache.init_app(app)
+
+
+  # plug in blueprints
+  app.register_blueprint(users_bp, url_prefix='/users')
 
 
   #register Blureprint when created
