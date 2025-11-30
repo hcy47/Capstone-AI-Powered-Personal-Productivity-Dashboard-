@@ -1,0 +1,76 @@
+
+
+===System Architecture Diagram:===
+1.Frontend (React)
+2.Backend API (Flask)
+3.Database (SQLite)
+4.External APIs (Weather, Quotes, etc.)
+5.AI Logic Module
+6.User’s Browser
+
+
+===Tables you will need:===
+1. User
+  -id 
+  -name 
+  -last_name
+  -email
+  -password 
+  -created_at 
+
+2. Task
+  -id 
+  -user_id 
+  -category_id 
+  - title 
+  -description 
+  -priority 
+  -due_date 
+  -is_comleted 
+  -created_at 
+  -updated_at 
+
+  
+3. Category
+  -id 
+  -user_id 
+  -name 
+  -category_name
+
+
+4. Task History
+  -id 
+  -task_id 
+  -user_id 
+  -completed_at
+
+
+5. AI Recommendation CAche
+  -id 
+  -task_id 
+  -user_id 
+  -recommended_time
+  -confidence
+  -generated_at
+
+
+7. Preferences(OPTINAL)
+
+
+
+==== IDENTIFYING THE RELATIONSHIPS ====
+USER -> TASK : ONE-TO-MANY
+User can  have `MANY` task but, tasks belongs to 1 user.
+
+CATEGORY -> TASK : ONE-TO-MANY
+Each category can have `MANY` task but 1 tasks belongs to 1 category
+
+
+USER -> TASK HISTORY : ONE-TO-MANY
+1 user can have `MANY` task completion but task need to be completed by 1 user
+
+USER -> AI_RECOMMENDATIONS : ONE-TO-MANY
+1 User can have MANY` ai recommendations but each ai recommendation belongs to 1 user
+
+TASKS -> AI_RECOMMENDATIONS : ONE-TO-MANY
+Each task can have ~MANY~ ai recommandations , but each ai recommendation belongs to 1 task

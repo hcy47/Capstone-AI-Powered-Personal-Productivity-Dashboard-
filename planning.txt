@@ -1,0 +1,165 @@
+`--- User Stories for the Productivity Dashboard---`
+
+--User Account & Authentication
+Sign Up
+Log 
+Log Out
+===
+---Task Management
+Create Task
+Edit Task
+Delete Task
+Mark Task as Complete
+Task Categorization (maybe)
+---
+--AI-Driven Features:
+AI Task Prioritization
+AI Smart Scheduling
+Habit Insights
+---
+--External API Integrations
+Weather Widget
+As a user,
+I want to see today's weather
+so that I can plan outdoor vs indoor tasks.
+
+Motivational Quotes
+
+As a user,
+I want a daily motivational quote
+so that I feel encouraged when I start my day.
+
+Calendar Sync (Optional)
+
+As a user,
+I want to sync my Google Calendar events
+so that all my commitments appear in one place.
+News Widget (Optional)
+
+As a user,
+I want to see a short list of daily news headlines
+so that I stay informed without distractions.
+
+
+===Dashboard & UI
+
+-Daily Overview : As a user,
+I want a dashboard showing my tasks, events, weather, and quote of the day
+so that I get a complete view of my day at a glance.
+
+-Task Calendar View
+As a user,
+I want to view my tasks on a calendar
+so that I can plan my week visually.
+
+-Productivity Stats
+As a user,
+I want to see analytics (tasks completed, categories, streaks)
+so that I can track my progress over time.
+
+===System & Technical Features
+– Autosave
+As a user,
+I want my changes (tasks, updates) to save automatically
+so that I don’t lose any data
+
+-Fast Loading
+As a user,
+I want the dashboard to load quickly
+so that I can check my tasks without delay.
+
+-Responsive Design
+As a user,
+I want the app to work on desktop and mobile
+so that I can use it anywhere.
+
+
+
+📅 CAPSTONE PROJECT TIMELINE (Until December 12)
+
+you have about 3 weeks.
+timeline
+
+====Week 1 — Planning & Foundations (Nov 25 – Dec 1)
+
+Goals:
+
+Finalize requirements
+
+User stories + acceptance criteria
+
+System architecture diagram
+
+Database schema
+
+API endpoints design
+
+Deliverables:
+
+Project documentation
+
+Initial GitHub repo
+
+Basic Flask app + React app bootstrapped
+
+==== Week 2 — Backend + Frontend Core (Dec 2 – Dec 8)
+
+Backend (Flask):
+
+User authentication
+
+Task CRUD (create, read, update, delete)
+
+SQLite models
+
+API routes tested with Postman
+
+Frontend (React):
+
+Login + signup pages
+
+Dashboard layout
+
+Task list UI
+
+Forms for creating/editing tasks
+
+Deliverables:
+
+Working task app with login + CRUD
+
+=== Week 3 — AI Features + APIs + Polishing (Dec 9 – Dec 15)
+
+AI Features:
+
+Priority suggestion model
+
+Recommendation logic
+
+External APIs:
+
+Weather
+
+Quotes
+
+(Optional) Google Calendar
+
+Polishing:
+
+Responsive UI
+
+Unit tests
+
+Documentation
+
+Final demo video
+
+Deliverables (final presentation):
+
+Fully functional productivity dashboard
+
+Clean UI
+
+Architecture diagram
+
+Report + demo
