@@ -3,6 +3,7 @@ from flask import  Flask
 from .models import db
 from .extensions import ma
 from .blueprints.users import users_bp
+from .blueprints.categories import categories_bp
 
 #create the application factory
 def create_app(config_name):
@@ -21,6 +22,7 @@ def create_app(config_name):
 
   # plug in blueprints
   app.register_blueprint(users_bp, url_prefix='/users')
+  app.register_blueprint(categories_bp, url_prefix='/categories')
 
 
   #register Blureprint when created

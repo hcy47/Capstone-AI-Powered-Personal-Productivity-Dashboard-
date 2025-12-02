@@ -18,7 +18,7 @@ def create_user():
   
   data['password'] = generate_password_hash(data['password']) # reassigning the password to the hashed version of the passswrd
 
-  user = db.session.query(User).filter_by(User.email == data['email']).first() # Checking if a user exist in my db who has the same password as the one passed in
+  user = db.session.query(User).where(User.email == data['email']).first() # Checking if a user exist in my db who has the same password as the one passed in
 
   if user:
     return jsonify({'error': 'Email already exist. Please log in!'}), 400
@@ -31,11 +31,54 @@ def create_user():
   return jsonify({
     "message": "User creation is Successful",
     "user": user_schema.dump(new_user)
-  })
+  }), 201
 
-  # create a new User in my database
-  # send a response
 
-#  view profile
+#  view profile - token auth eventually
+@users_bp.route('/<int:user_id>' , methods=['GET'])
+def get_user(user_id):
+  user = db.session.get (User, user_id)
+  if user:
+    return user_schema.jsonify(user), 200
+  return jsonify({"error": "Invalid user id"}), 400
+
+
 # update Profile
+@users_bp.route('/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+  user= db.session.get(User, user_id)
+
+  if not user:
+    return jsonify({'error':'Invalid User Id'}), 404
+  
+  try:
+    data = user_schema.load(request.json)
+  except ValidationError as e:
+    return jsonify(e.messages), 400
+  
+  data['password'] = generate_password_hash(data['password'])
+
+  existing = db.session.query(User).where(User.email == data['email']).first()
+  if existing:
+    return jsonify({'error': "Email already taken"})
+  
+  for key, value in data.items():
+    setattr(user, key, value)
+
+  db.session.commit()
+  return jsonify({
+    "message": "Succesfully updated account",
+    "user": user_schema.dump(user)
+  }), 200
+
+
+
 #delete Profile
+@users_bp.route('/<int:user_id>',methods=['DELETE'])
+def delete_user(user_id):
+  user = db.session.get(User, user_id)
+  if user:
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"message": "Succesfully deleted user."}), 200
+  return jsonify({"error": "Invalid user id"}), 404
