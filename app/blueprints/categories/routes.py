@@ -15,10 +15,6 @@ def create_category():
   except ValidationError as e:
     return jsonify(e.messages), 400
   
-
-
-
-  
   new_category = Category(**data) 
   db.session.add(new_category)
   db.session.commit()

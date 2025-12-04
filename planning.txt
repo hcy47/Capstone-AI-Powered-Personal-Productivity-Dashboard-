@@ -44,8 +44,9 @@ so that I stay informed without distractions.
 ===Dashboard & UI
 
 -Daily Overview : As a user,
-I want a dashboard showing my tasks, events, weather, and quote of the day
+I want a dashboard showing my tasks,categories, events, weather, and quote of the day
 so that I get a complete view of my day at a glance.
+
 
 -Task Calendar View
 As a user,
