@@ -36,16 +36,13 @@ class Task(Base):
   __tablename__= 'tasks'
 
   id: Mapped[int] = mapped_column(primary_key=True)
-  user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
-  category_id: Mapped[int] = mapped_column(ForeignKey('categories.id'), nullable=False)
+  user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=True)
+  category_id: Mapped[int] = mapped_column(ForeignKey('categories.id'), nullable=True)
   title: Mapped[str] = mapped_column(String(100), nullable=False)
-  description: Mapped[str] = mapped_column(String(300))
   priority: Mapped[int] = mapped_column(Integer, default=1)  
   due_date: Mapped[datetime] = mapped_column(DateTime, nullable=True)
   is_completed: Mapped[bool] = mapped_column(Boolean, default=False)
   created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
-  updated_at: Mapped[datetime] = mapped_column(
-  DateTime, default=datetime.now, onupdate=datetime.now)
 
   # RELATIONSHIPS
   user: Mapped["User"] = relationship("User", back_populates="tasks")
@@ -60,10 +57,11 @@ class Task(Base):
 class Category(Base):
   __tablename__= 'categories'
 
-  id: Mapped[int]= mapped_column(primary_key= True)
-  user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=False)
-  name: Mapped[str] = mapped_column(String(300), nullable=False)
-  category_name: Mapped[str] = mapped_column(String(300), nullable=False)
+  id: Mapped[int] = mapped_column(primary_key=True)
+  user_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=True)
+  name: Mapped[int] = mapped_column(String(50), nullable=False, unique=True)
+  icon: Mapped[int] = mapped_column(String(20), nullable=True)   # optional
+  color: Mapped[int] = mapped_column(String(20), nullable=True)  # optional
 
   # relationships
   user: Mapped['User']= relationship('User', back_populates='categories')

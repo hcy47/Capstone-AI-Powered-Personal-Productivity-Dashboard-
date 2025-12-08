@@ -5,7 +5,7 @@ from app.models import Category
 class CategorySchema(ma.SQLAlchemyAutoSchema):
   class Meta:
     model = Category
-    include_fk = True
+    Load_instance = True
 
 
 # instantiate the schema
