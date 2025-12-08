@@ -13,14 +13,12 @@ def seed_default_categories():
     {"name": "Health", "icon": "🏋️", "color": "green"},
     {"name": "Education", "icon": "📚", "color": "yellow"},
     {"name": "Finance", "icon": "💰", "color": "orange"},
-
   ]
   for cat in default_categories:
-    exists = Category.query.filter_by(name=cat['name']).first()
+    exists = db.session.query(Category).filter_by(name=cat['name']).first()
     if not exists:
       new_category = Category(**cat)
       db.session.add(new_category)
-
   db.session.commit()
   print("Category set succesfully")
 
@@ -28,7 +26,7 @@ def seed_default_categories():
 #get route
 @categories_bp.route('', methods=['GET'])
 def get_all_categories():
-    all_categories = Category.query.all()
+    all_categories = db.session.query(Category).all()
     return categories_schema.jsonify(all_categories), 200
 
 
