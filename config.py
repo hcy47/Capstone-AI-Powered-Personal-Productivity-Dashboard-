@@ -6,5 +6,6 @@ class DevelopmentConfig():
     SECRET_KEY = 'super secret secrets'
 
 class ProductionConfig():
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
-    CACHE_TYPE = "SimpleCache"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///app.db')
+    DEBUG = False
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'change_this_in_production')
