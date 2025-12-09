@@ -2,8 +2,10 @@ from flask import Flask
 from app import create_app
 from app.models import db
 from app.blueprints.categories.routes import seed_default_categories
+from flasgger import Swagger
 
 app = create_app('ProductionConfig')
+Swagger(app, template_file='app/static/swagger.yaml')
 
 with app.app_context():
   # db.drop_all()
