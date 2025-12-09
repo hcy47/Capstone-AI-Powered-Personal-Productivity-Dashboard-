@@ -4,7 +4,7 @@ from app import create_app
 from app.models import db
 from app.blueprints.categories.routes import seed_default_categories
 
-app = create_app('DevelopmentConfig')
+app = create_app('ProductionConfig')
 
 with app.app_context():
   # db.drop_all()
@@ -12,4 +12,6 @@ with app.app_context():
   seed_default_categories()
   
 
-app.run()
+#app.run() # because of the gunicorn to run my app i do not need app.run() funcntion here anymore
+
+#gunicorn flask_app:app
