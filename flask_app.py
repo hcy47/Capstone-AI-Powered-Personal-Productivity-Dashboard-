@@ -3,9 +3,11 @@ from app import create_app
 from app.models import db
 from app.blueprints.categories.routes import seed_default_categories
 from flasgger import Swagger
+import os
 
 app = create_app('ProductionConfig')
-Swagger(app, template_file='static/swagger.yaml')
+swagger_path = os.path.join(os.path.dirname(__file__), 'app', 'static', 'swagger.yaml')
+Swagger(app, template_file=swagger_path)
 
 with app.app_context():
   # db.drop_all()
